@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.form{
+  background-color: red;
+  margin: 10px;
+  padding: 3px;
+  width: 400px;
+}

@@ -6,19 +6,27 @@ import { FaRegFaceLaughSquint } from "react-icons/fa6";
 
 const page = () => {
     const [color, setColor]= useState('grey')
-    const [reaction, setReaction]= useState('love')
+    const [reaction, setReaction]= useState('like')
     const [reactionDivOpen, setReactionDivOpen]= useState(false)
 
 
-    const changeReaction =(newReaction)=>{
+    const changeReaction =(newReaction, newColor)=>{
+      //love --> newReaction--> love
       setReaction(newReaction)
+      debugger;
+      if(newReaction===reaction && color===newColor){
+        setColor('grey')
+      }else{
+        setColor(newColor)
+      }
+    
     }
 
   const ReactionDiv= ()=>{
     return (
       <div className='border border-gray-200 shadow-lg w-32'>
         <button  className=' p-2 '>
-            <GrLike onClick={()=> changeReaction('like')} color="skyblue"/>
+            <GrLike onClick={()=> changeReaction('like', 'skyblue')} color="skyblue"/>
         </button>
         <button  className=' p-2 '>
             <FaHeart  onClick={()=> changeReaction('love')} color="crimson"/>
@@ -47,7 +55,10 @@ const page = () => {
     }
     else{
         return ( 
-          <button onMouseEnter={()=>setReactionDivOpen(true)} className='bg-gray-200 p-2 border border-black'>
+          <button 
+          onClick={()=>changeReaction('like')}
+          onMouseEnter={()=>setReactionDivOpen(true)}
+           className='bg-gray-200 p-2 border border-black'>
             <GrLike color={color}/>
         </button>)
  
@@ -59,6 +70,8 @@ const page = () => {
 //Do not use ternary operator for multiple else if
   return (
     <div>
+      {reaction}
+      {color}
         {reactionDivOpen ? <ReactionDiv/>: null }
         {generateReactionButton()}
     </div>

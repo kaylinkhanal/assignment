@@ -12,12 +12,12 @@ const page = () => {
 
     const changeReaction =(newReaction, newColor)=>{
       //love --> newReaction--> love
-      setReaction(newReaction)
-      debugger;
       if(newReaction===reaction && color===newColor){
         setColor('grey')
+        setReaction('like')
       }else{
         setColor(newColor)
+        setReaction(newReaction)
       }
     
     }
@@ -42,13 +42,17 @@ const page = () => {
     //we will have if else later, if reaction is like, show like button,,..... similar
     if(reaction === 'love'){
       return (
-            <button onMouseEnter={()=>setReactionDivOpen(true)} className=' p-2 '>
+            <button
+            onClick={()=>changeReaction('love')}
+            onMouseEnter={()=>setReactionDivOpen(true)} className=' p-2 '>
             <FaHeart color="crimson"/>
         </button>
       )
     }else  if(reaction === 'haha'){
       return (
-            <button onMouseEnter={()=>setReactionDivOpen(true)} className=' p-2 '>
+            <button
+            onClick={()=>changeReaction('haha')}
+            onMouseEnter={()=>setReactionDivOpen(true)} className=' p-2 '>
             <FaRegFaceLaughSquint color="orange"/>
         </button>
       )

@@ -4,10 +4,10 @@ import CustomNavbar from "@/components/navbar/page";
 import {Button,Input} from "@nextui-org/react";
 import Link from "next/link";
 
-const Register = () => {
+const Login = () => {
   return (
   <>
-      <CustomNavbar/>
+
       <div className="flex justify-center ">
       <div className='border border-black m-7 w-72 p-4 '>
           <Input type="email" label="Email" /> <br/>
@@ -22,4 +22,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default Login

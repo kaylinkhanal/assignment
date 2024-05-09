@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React,{useRef, useEffect} from 'react';
 import { useFormik } from 'formik';
 import {Input} from "@nextui-org/react";
 import * as Yup from 'yup';
@@ -21,6 +21,7 @@ const SignupSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
 });
 const SignupForm = () => {
+  const inputRef= useRef(null)
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -46,6 +47,9 @@ const SignupForm = () => {
       value={formik.values.firstName}
       placeholder="Enter your firstName"
       className="max-w-xs"
+      onClear={()=>{
+        formik.setFieldValue("firstName", '')
+      }}
     />
         {formik.errors.firstName}
       <label htmlFor="lastName">Last Name</label>
@@ -66,9 +70,7 @@ const SignupForm = () => {
       type="email"
       label="Email"
       variant="bordered"
-      onChange={formik.handleChange}
-      name="email"
-      value={formik.values.email}
+      isRequired={true}
       placeholder="Enter your email"
       defaultValue="junior@nextui.org"
       onClear={() => console.log("input cleared")}

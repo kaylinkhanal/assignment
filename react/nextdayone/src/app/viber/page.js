@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import { FaHeart } from "react-icons/fa";
 
 //functional components---> stateless component
-const page = () => {
+const Viber = () => {
     let [color, setColor] = useState('gray')
     const changeColor = ()=> {
         // ? : syntax is ternary operator
@@ -11,10 +11,8 @@ const page = () => {
        setColor(color==='red' ? 'gray': 'red')
     }
   return (
-    <div className='p-2 w-8 shadow-lg m-2'>
-        <FaHeart onClick={()=>changeColor()} className={'text-'+color+'-400'}/>
-    </div>
+        <FaHeart onClick={()=>changeColor()}color={color}/>
   )
 }
 
-export default page
+export default Viber
